@@ -1,1020 +1,146 @@
 <!DOCTYPE html>
-<html lang="ru-ru">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		
-		
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Gearhart Home Improvements</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/media.css">
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-navbutton-color" content="#000">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+</head>
+<body>
 
-        
-        
-		
-        <link href="./css/normalize.css" rel="stylesheet" type="text/css"/>
-		<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic|PT+Sans+Narrow:400,700|Russo+One&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>		
-        
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		
-        		
-		<script src="/js/underscore-min.js"></script>
-				<script>window.tobiz = {"project_id":"12054","rep_id":"23998","user_id":"2","owner_email":"templates@tobiz.net","t":"2","w":"0"}</script>
-		<link rel="stylesheet" type="text/css" href="./css/style.css?ver=1479976756">		
-				
-
-		<script type="text/javascript" src="./js/script.js?v=1480420793"></script>	
-			
-			
-
-		<meta name="description" content="" />        
-		<meta name="keywords" content="" />  
-                
-                
-                
-                                    <meta name="viewport" content="width=1200"> 
-                		
-		<title></title>
-		
-		
-
-		<script type="text/javascript">
-			$(function(){
-				$('form[action="handler.php"]').submit(function (event) {
-					event.preventDefault();
-					
-//					var check = 1;
-//					$(this).find('[""]')
-					
-					
-					
-					var this_form = $(this);
-					if (!$(this).children("input[name=project_id]").length)
-						$(this).prepend('<input type="hidden" name="project_id" value="' + window.tobiz.project_id + '">');
-					if (!$(this).children("input[name=page_id]").length)
-						$(this).prepend('<input type="hidden" name="page_id" value="' + window.tobiz.rep_id + '">');
-					if (!$(this).children("input[name=referrer]").length)
-						$(this).prepend('<input type="hidden" name="referrer" value="' + document.referrer + '">');
-					if (!$(this).children("input[name=user_id]").length)
-						$(this).prepend('<input type="hidden" name="user_id" value="' + window.tobiz.user_id + '">');
-
-					if ($(this).find("[data-action]").size()){
-						console.log(123);
-						$(this).prepend('<input type="hidden" name="action" value="' + $(this).find("[data-action]").data('action') + '">');
-						$(this).prepend('<input type="hidden" name="amount" value="' + $(this).find("[data-action]").data('amount') + '">');
-						$(this).prepend('<input type="hidden" name="url" value="' + $(this).find("[data-action]").data('url') + '">');
-					}else{
-						console.log('not found');
-					}
-					var formData = new FormData($(this)[0]);
-					var this_block = $(this).closest('.section');
-					$.ajax({
-						dataType: "json", 
-						type: "POST", 
-						url: "/handler.php", 
-						data: formData, 
-						async: false, 
-						cache: false, 
-						contentType: false, 
-						processData: false
-					}).done(function (data) {
-						if (data.status == 'OK') {
-							alert(data.msg);
-							this_form.each(function () {
-								$(this)[0].reset();
-							})
-							$('.popup_form').hide();
-						}
-						if (data.status == 'ERROR') {
-							alert(data.msg);
-						}
-						if (data.status == 'JC') {
-														$('body').append(data.form);
-							$('#jc_form').submit();
-							this_form.each(function () {
-								$(this)[0].reset();
-							})
-						}
-						if (data.status == 'SR') {
-														$('body').append(data.form);
-							$('#sr_form').submit();
-							this_form.each(function () {
-								$(this)[0].reset();
-							})
-						}
-						if (data.status == 'GR') {
-														$('body').append(data.form);
-							$('#gr_form').submit();
-							this_form.each(function () {
-								$(this)[0].reset();
-							})
-						}
-						if (data.status == 'RK') {
-														this_form.each(function () {
-								$(this)[0].reset();
-							})
-							window.location.href = data.url;
-						}
-						if (data.status == 'redirect') {
-														this_form.each(function () {
-								$(this)[0].reset();
-							})
-							
-							
-							window.location.href = data.url;
-						}
-						if (data.status == 'thanks') {
-														this_block.find('.popup_thanks').show();				
-							this_form.each(function () {
-								$(this)[0].reset();
-							})
-							$('.popup_form').hide();
-						}
-					}).error(function (xhr, ajaxOptions, thrownError) {
-						console.log(xhr.status);
-						console.log(thrownError)
-					});
-				})		
-			})
-		</script>		
-		
-		
-				
-		
-						
-		
-		
-		
-        		
-		
-		
-		
-		
-		
-    </head>
-    <body class="editor_false">
-				<div id="wrapper">
-			<div class=" section section103 " style="background:#ffffff; background-image:url(./img/pattern_11.png);"><a name="a_44969"></a>
-							<div class="section_inner">
-								<div class="slogan">
-										<div class="text1">Двери оптом и в розницу<div></div></div>
-										<div class="text2">Межкомнатные и внешние с доставкой по всей РФ.</div>
-								</div>
-								
-									<div class="logo_img"><img src="./img/200x0/ba37d7dc3a3d60436eeb80cbcaf57f63.png" alt=""></div>
-								
-								<div class="phone-and-btn">
-										<div class="phone1">8 800 333 22 33</div>
-										<div class="btn1" style="color:#000000;">Заказать звонок</div>
-										<div class="clear"></div>
-								</div>
-								<div class="clear"></div>
-									<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Перезвоните мне" style="color:#000000;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-							</div>
-						</div>
-<div class="section section153   " style="background-color:#ffffff; background-image:url(./img/1920x0/c018b436a37aab2dc905c0496440e1b2.jpeg);"><a name="a_45992"></a>
-							
-							<div class="dark"></div>
-							<div class="noise" style="background-image:url(./img/pattern_11.png);"></div>
-							<div class="section_inner  ">
-								<div class="title  ">Двери межкомнатные <br>и внешние от производителя.</div>
-								<div class="sub_title  ">Только до 31 декабря - 7 ночей по цене 28 000 рублей </div>
-								
-									<div class="btn1" style="color:#FFFFFF">Заказать по спец. цене</div>
-									<div class="btn_descr">
-
-У нас самые лучшие стальные двери! И это правда проверенная временем, экспертами и злоумышленниками. Завод существует уже более 15 лет, и является крупнейшим производителем стальных дверей на территории России.</div>
-								
-								<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Заказать по спец. цене" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-								<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-							</div>
-						</div>
-<div class="hide_line section section128  " style="background:#FFFFFF; background-image:url(./img/pattern_11.png);"><a name="a_39676"></a>
-							<div class="section_inner">
-								<div class="title  hidden   ">
-
-Большой опыт работы позволяет гарантировать результат!
-
+<div class="counters">
+	<!-- counters code -->
 </div>
-								<div class="sub_title  hidden   ">
 
-Почему я на 100% уверен в том, что вы можете стать лучше&nbsp;
-
-</div>
-								  
-									<div class="arr1">
-										<div class="col_3">
-											
-											<div class="image1 s120  radius    border   shadow  "><img src="./img/120x120/c1a0716975b64c4c08340b37344f28d2.jpg" alt=""></div>
-											
-											<div class="title1">НАДЕЖНОСТЬ</div>
-											<div class="txt1 ">
-
-Мы живём по этой простой формуле уже много лет, и это дало свои плоды!</div>
-											<div class="price1  hidden  ">2000 руб. за кв. м</div>
-											<div class="btn1  hidden  " style="color:#0187BC;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#ff0000;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											
-											<div class="image2 s120  radius    border   shadow  "><img src="./img/120x120/2cfeae9e22056446bb8172928ee29eca.jpg" alt=""></div>
-											
-											<div class="title2">БЕЗОПАСНОСТЬ</div>
-											<div class="txt2 ">
-
-
-
-Покупая двери у нас, вы получаете <br>сертификат качества.</div>
-											<div class="price2  hidden  ">2000 руб. за кв. м</div>
-											<div class="btn2  hidden  " style="color:#0187BC;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#ff0000;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											
-											<div class="image3 s120  radius    border   shadow  "><img src="./img/120x120/d2fe3e68c1dc6e1a4015617aa017ee09.jpeg" alt=""></div>
-											
-											<div class="title3">НИЗКАЯ ЦЕНА</div>
-											<div class="txt3 ">Мы предоставляем самые низкие цены по текущему рынку.<br></div>
-											<div class="price3  hidden  ">2000 руб. за кв. м</div>
-											<div class="btn3  hidden  " style="color:#0187BC;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#ff0000;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								
-							</div>
-						</div>
-<div class="hide_line section section128  " style="background:#ffffff; background-image:url(./img/pattern_11.png);"><a name="a_45994"></a>
-							<div class="section_inner">
-								<div class="title  ">Каталог дверей межкомнатных дверей.</div>
-								<div class="sub_title  ">Выберите подходящие двери.</div>
-								  
-									<div class="arr1">
-										<div class="col_3">
-											<div class="image1 s200   border   shadow  "><img src="./img/200x200/c3a509cdb3e9682b0e5aa03f928bffd1.png" alt=""></div>
-											
-											
-											<div class="title1">ДВЕРЬ БЕЛАЯ</div>
-											<div class="txt1 ">
-
-Облегченная конструкция<br>Один лист металла 2 мм.<br>Петли на опорном подшипнике<br>Замкнутая дверная коробка<br>Заполнение полотна пенополиуретаном<br>Всегда в наличии на складе
-
-</div>
-											<div class="price1 ">750 руб.</div>
-											<div class="btn1 " style="color:#8F4200;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											<div class="image2 s200   border   shadow  "><img src="./img/200x200/62030e2851a40049b73fc3b593186f60.png" alt=""></div>
-											
-											
-											<div class="title2">
-
-ДВЕРЬ КОРИЧНЕВАЯ</div>
-											<div class="txt2 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price2 ">
-
-960 руб.
-
-</div>
-											<div class="btn2 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											<div class="image3 s200   border   shadow  "><img src="./img/200x200/b576a0d8f317ab846c2e63aef2627067.png" alt=""></div>
-											
-											
-											<div class="title3">
-
-ДВЕРЬ РЫЖАЯ</div>
-											<div class="txt3 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price3 ">
-
-1230 руб.
-
-</div>
-											<div class="btn3 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								  
-									<div class="arr1">
-										<div class="col_3">
-											<div class="image1 s200   border   shadow  "><img src="./img/200x200/acd2a1331a2b305366011056aff98573.png" alt=""></div>
-											
-											
-											<div class="title1">ДВЕРЬ БЕЛАЯ</div>
-											<div class="txt1 ">
-
-Облегченная конструкция<br>Один лист металла 2 мм.<br>Петли на опорном подшипнике<br>Замкнутая дверная коробка<br>Заполнение полотна пенополиуретаном<br>Всегда в наличии на складе
-
-</div>
-											<div class="price1 ">750 руб.</div>
-											<div class="btn1 " style="color:#8F4200;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											<div class="image2 s200   border   shadow  "><img src="./img/200x200/c0175a47851d209f61f65b7f37544f8a.png" alt=""></div>
-											
-											
-											<div class="title2">
-
-ДВЕРЬ КОРИЧНЕВАЯ</div>
-											<div class="txt2 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price2 ">
-
-960 руб.
-
-</div>
-											<div class="btn2 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											<div class="image3 s200   border   shadow  "><img src="./img/200x200/9517d1f4d07783884f14b23a8db5fd46.png" alt=""></div>
-											
-											
-											<div class="title3">
-
-ДВЕРЬ РЫЖАЯ</div>
-											<div class="txt3 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price3 ">
-
-1230 руб.
-
-</div>
-											<div class="btn3 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								  
-									<div class="arr1">
-										<div class="col_3">
-											<div class="image1 s200   border   shadow  "><img src="./img/200x200/c3a509cdb3e9682b0e5aa03f928bffd1.png" alt=""></div>
-											
-											
-											<div class="title1">ДВЕРЬ БЕЛАЯ</div>
-											<div class="txt1 ">
-
-Облегченная конструкция<br>Один лист металла 2 мм.<br>Петли на опорном подшипнике<br>Замкнутая дверная коробка<br>Заполнение полотна пенополиуретаном<br>Всегда в наличии на складе
-
-</div>
-											<div class="price1 ">750 руб.</div>
-											<div class="btn1 " style="color:#8F4200;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											<div class="image2 s200   border   shadow  "><img src="./img/200x200/62030e2851a40049b73fc3b593186f60.png" alt=""></div>
-											
-											
-											<div class="title2">
-
-ДВЕРЬ КОРИЧНЕВАЯ</div>
-											<div class="txt2 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price2 ">
-
-960 руб.
-
-</div>
-											<div class="btn2 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											<div class="image3 s200   border   shadow  "><img src="./img/200x200/b576a0d8f317ab846c2e63aef2627067.png" alt=""></div>
-											
-											
-											<div class="title3">
-
-ДВЕРЬ РЫЖАЯ</div>
-											<div class="txt3 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price3 ">
-
-1230 руб.
-
-</div>
-											<div class="btn3 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								  
-									<div class="arr1">
-										<div class="col_3">
-											<div class="image1 s200   border   shadow  "><img src="./img/200x200/acd2a1331a2b305366011056aff98573.png" alt=""></div>
-											
-											
-											<div class="title1">ДВЕРЬ БЕЛАЯ</div>
-											<div class="txt1 ">
-
-Облегченная конструкция<br>Один лист металла 2 мм.<br>Петли на опорном подшипнике<br>Замкнутая дверная коробка<br>Заполнение полотна пенополиуретаном<br>Всегда в наличии на складе
-
-</div>
-											<div class="price1 ">750 руб.</div>
-											<div class="btn1 " style="color:#8F4200;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											<div class="image2 s200   border   shadow  "><img src="./img/200x200/c0175a47851d209f61f65b7f37544f8a.png" alt=""></div>
-											
-											
-											<div class="title2">
-
-ДВЕРЬ КОРИЧНЕВАЯ</div>
-											<div class="txt2 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price2 ">
-
-960 руб.
-
-</div>
-											<div class="btn2 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											<div class="image3 s200   border   shadow  "><img src="./img/200x200/9517d1f4d07783884f14b23a8db5fd46.png" alt=""></div>
-											
-											
-											<div class="title3">
-
-ДВЕРЬ РЫЖАЯ</div>
-											<div class="txt3 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price3 ">
-
-1230 руб.
-
-</div>
-											<div class="btn3 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								  
-									<div class="arr1">
-										<div class="col_3">
-											<div class="image1 s200   border   shadow  "><img src="./img/200x200/c3a509cdb3e9682b0e5aa03f928bffd1.png" alt=""></div>
-											
-											
-											<div class="title1">ДВЕРЬ БЕЛАЯ</div>
-											<div class="txt1 ">
-
-Облегченная конструкция<br>Один лист металла 2 мм.<br>Петли на опорном подшипнике<br>Замкнутая дверная коробка<br>Заполнение полотна пенополиуретаном<br>Всегда в наличии на складе
-
-</div>
-											<div class="price1 ">750 руб.</div>
-											<div class="btn1 " style="color:#8F4200;">Узнать подробнее</div>
-											
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3">
-											<div class="image2 s200   border   shadow  "><img src="./img/200x200/62030e2851a40049b73fc3b593186f60.png" alt=""></div>
-											
-											
-											<div class="title2">
-
-ДВЕРЬ КОРИЧНЕВАЯ</div>
-											<div class="txt2 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price2 ">
-
-960 руб.
-
-</div>
-											<div class="btn2 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form2"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="col_3 last">
-											<div class="image3 s200   border   shadow  "><img src="./img/200x200/b576a0d8f317ab846c2e63aef2627067.png" alt=""></div>
-											
-											
-											<div class="title3">
-
-ДВЕРЬ РЫЖАЯ</div>
-											<div class="txt3 ">
-
-Облегченная конструкция<div>Один лист металла 2 мм.</div><div>Петли на опорном подшипнике</div><div>Замкнутая дверная коробка</div><div>Заполнение полотна пенополиуретаном</div><div>Всегда в наличии на складе
-
-</div></div>
-											<div class="price3 ">
-
-1230 руб.
-
-</div>
-											<div class="btn3 " style="color:#8F4200;">Узнать подробнее</div>
-											<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form3"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Отправить" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-										</div>
-										<div class="clear"></div>
-									</div> 
-									<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-								
-							</div>
-						</div>
-<div class="hide_line section section121 " style="background:#FFFFFF; background-image:url(./img/pattern_11.png);"><a name="a_45029"></a>
-							<div class="section_inner">
-								<div class="title  ">Заголовок</div>
-								<div class="sub_title  ">О работе нашей компании в цифрах</div>
-								  
-									<div class="arr1">
-										<div class="col_4  border    shadow  ">
-											<div class="num1">8&nbsp;</div>
-											<div class="txt1">лет на рынке дверей&nbsp;<div>в России</div><div><br></div></div>
-											<div class="clear"></div>
-										</div>
-										<div class="col_4  border    shadow  ">
-											<div class="num2">300</div>
-											<div class="txt2">магазинов в Москве реализуют нашу продукцию.</div>
-											<div class="clear"></div>
-										</div>
-										<div class="col_4  border    shadow  ">
-											<div class="num3">20</div>
-											<div class="txt3">регионов России сотрудничают с нами.<div><br></div></div>
-											<div class="clear"></div>
-										</div>
-										<div class="col_4 last  border    shadow  ">
-											<div class="num4">1040&nbsp;</div>
-											<div class="txt4">дверей мы продаем ежемесячно.<div><br></div></div>
-											<div class="clear"></div>
-										</div>
-										<div class="clear"></div>
-									</div> 
-								
-							</div>
-						</div>
-<div class="hide_line section section164  " style="background-color:#FFFFFF; background-image:url(./img/pattern_11.png);"><a name="a_44849"></a>
-							<div class="section_inner ">
-								<div class="col pcenter">
-									<div class="sub_title  ">Оставьте заявку прямо сейчас! Получите полный прайс-лист</div>
-									
-									<div class="btn1" style="color:#8F4200">ПОЛУЧИТЬ ПРАЙС-ЛИСТ</div>
-									<div class="btn_descr  ">Вышлем его на ваш E-mail в течение 1 минуты</div>
-								</div>
-								<div class="clear"></div>
-								<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Получить прайс лист" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-								<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-							</div>
-						</div>
-<div class="hide_line section section143  " style="background:#ffffff; background-image:url(./img/pattern_11.png);"><a name="a_45030"></a>
-							<div class="section_inner">
-								<div class="title  "><div><br></div>О нашем производстве</div>
-								<div class="sub_title  ">Наше главное производство находится в Москве</div>
-								<div class="images">
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/1861979da48497c28d67c93c787df56e.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/00e2cf4bb0ad76ed9bf0220cd89b6e36.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/e86b7d8858f4cd6c3464ed54706d0037.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/451cbb425a95964feea30d5def6577b5.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/7940b988f714e376dd84a2d65ff758b7.jpeg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/e25cd6f019458049dcd64ceab9c94f11.jpeg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/1861979da48497c28d67c93c787df56e.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/00e2cf4bb0ad76ed9bf0220cd89b6e36.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									  
-											<div class="image_box arr1  border   shadow  ">
-												<img src="./img/300x225/e86b7d8858f4cd6c3464ed54706d0037.jpg" alt="">
-												<div class="overlay_image_box">
-													<div class="overlay_image_title"></div>
-													<div class="overlay_image_descr"></div>
-												</div>
-											</div>
-									
-									<div class="clear"></div>
-								</div>
-							</div>
-						</div>
-<div class="hide_line section section162  " style="background:#FFFFFF; background-image:url(./img/pattern_11.png);"><a name="a_43538"></a>
-							<div class="section_inner">
-								<div class="title  ">Как нас найти<div><br></div></div>
-								<div class="sub_title  hidden   ">Рыбный текст</div>
-								<div class="map" data-map-obj="[{&quot;address&quot;:&quot;Москва, Ноовслободская 2&quot;,&quot;color&quot;:&quot;#4285F4&quot;}]" data-map-center="{&quot;zoom&quot;:5,&quot;center&quot;:[55.372152137433,40.496177132508]}"><div class="map_inner"></div></div>
-								<div class="text "><div>НАШ АДРЕС:<br></div><div>г. Москва, ул. Центральная, д. 1, оф.100</div><div>Телефон&nbsp;
-
-8 800 333 22 33
-
-</div><div>Адрес электронной почты law@yandex.ru</div><div>Факс:&nbsp;</div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div></div>
-								<div class="clear"></div>
-							</div>
-					</div>
-<div class=" section section164  " style="background-color:#FFFFFF; background-image:url(./img/pattern_11.png);"><a name="a_43557"></a>
-							<div class="section_inner ">
-								<div class="col pcenter">
-									<div class="sub_title  "><div><br></div>ОСТАЛИСЬ ВОПРОСЫ? НУЖНА КОНСУЛЬТАЦИЯ?&nbsp;<div>Оставьте заявку на обратный звонок!</div></div>
-									
-									<div class="btn1" style="color:#8F4200">Заказать обратный звонок</div>
-									<div class="btn_descr  hidden   "></div>
-								</div>
-								<div class="clear"></div>
-								<div class="popup_form">
-                        <div class="popup_form_inner">
-								<div class="popup_form_close">X</div>
-								<div class="popup_form_title">Оставить  заявку</div>
-								<form action="handler.php" enctype="multipart/form-data" method="post">
-									<div class="form1"><div class="field"><div class="field_title">Введите имя</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите имя"></div></div><div class="field"><div class="field_title">Введите E-mail</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите E-mail"></div></div><div class="field"><div class="field_title">Введите номер телефона</div><div class="field_description"></div><div class="field_input"><input type="text" required="required" name="Введите номер телефона"></div></div><div class="field"><div class="field_input"><input type="submit" data-action="thanks" data-url="" data-amount="0" value="Заказать" style="color:#8F4200;"></div></div></div>
-								</form>
-								<div class="popup_form_text">Мы не передаем Вашу персональную информацию третьим лицам.</div>
-						</div>
-                    </div>
-                
-								<div class="popup_thanks">
-                        <div class="popup_thanks_inner">
-                            <div class="popup_thanks_close">X</div>
-                            <div class="popup_thanks_title">Спасибо за заявку!</div>
-                            <div class="popup_thanks_text">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.</div>
-                        </div>
-                    </div>
-                
-							</div>
-						</div>
-<div class=" section section119  dark " style="background:#3D3D3D; background-image:url(./img/pattern_11.png);"><a name="a_46004"></a><div class="section_inner">
-							
-								<div class="logo_img"><img src="./img/200x0/default_logo.jpg" alt=""></div>
-							
-							<div class="address-and-ua">
-								<div class="address1">ООО «СтройТрейд», 123456, г.Москва, ул. Центральная 1, офис 100 <br>ИНН 1234567890 ОГРН 123456789012</div>
-								<div class="policy ">Политика конфиденциальности</div>
-							</div>
-							<div class="phone-and-address">
-								<div class="phone1">8 800 333 22 33</div>
-								<div class="text1">Звонок по России бесплатный</div>
-								<a target="_blank" href="http://tobiz.net/" class="tobiz_link ">Сделано на платформе TOBIZ.NET</a>
-							</div>
-							<div class="clear"></div>
-						</div></div>
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="index.html" class="header__logo">Gearhart <span>Home Improvements</span></a>
+				<a href="#" class="header__menu-link button"><i></i></a>
+				<nav class="header__menu">
+					<ul class="header__menu__list">
+						<li class="header__menu__item header__menu__item_close"><a href="#" class="header__menu__item__link">Close menu</a></li>
+						<li class="header__menu__item header__menu__item_active"><a href="index.html" class="header__menu__item__link">Home</a></li>
+						<li class="header__menu__item"><a href="about.html" class="header__menu__item__link">About</a></li>
+						<li class="header__menu__item"><a href="kitchens.html" class="header__menu__item__link">Kitchens</a></li>
+						<li class="header__menu__item"><a href="bathrooms.html" class="header__menu__item__link">Bathrooms</a></li>
+						<li class="header__menu__item"><a href="renovations.html" class="header__menu__item__link">Renovations</a></li>
+						<li class="header__menu__item"><a href="contact.html" class="header__menu__item__link">Contact</a></li>
+						<li class="header__menu__item"><a href="contact.html" class="button">Request a quote</a></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
+	</div>
+</header>
+
+<section class="main-title">
+	<div class="main-title__image"><img src="img/main_top.jpg" alt=""></div>
+	<div class="main-title__content">
+		<div class="container">
+			<div class="main-title__inner">
+				<h1 class="main-title__title">Renovating Homes</h1>
+				<p class="main-title__description">We Offer Complete House Renovating Services With Guaranteed Satisfaction</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content">
+	<div class="container">
+		<div class="row">
+
+			<div class="aside col-md-4 col-sm-6">
+				<h2 class="aside-title">Making<br> Your Dreams<br> a Reality</h2>
+				<div class="preview">
+					<h3 class="preview__title"><a href="about.html">Who We Are</a></h3>
+					<p class="preview__description">Gearhart Home Improvements has been in the construction field for over 20 years. We believe things should be done right the first time so years to come you don’t have to do it again. Our name and reputation mean a lot to us so, that means no cutting corners that end up costing us more in the end.</p>
+					<a href="about.html" class="button">Read more</a>
+				</div>
+			</div>
+
+			<div class="main-content col-md-8 col-sm-6">
+				<div class="row">
+
+					<div class="col-md-4">
+						<div class="preview">
+							<div class="preview__image"><a href="bathrooms.html"><img src="img/main_preview_1.jpg" alt=""></a></div>
+							<h3 class="preview__title"><a href="bathrooms.html">Bathroom Remodeling</a></h3>
+							<p class="preview__description">Let us make your bathroom dreams a reality! Show us a picture of the kind of bathroom you want and we will take care of the rest.</p>
+							<a href="bathrooms.html" class="button">Read more</a>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="preview">
+							<div class="preview__image"><a href="kitchens.html"><img src="img/main_preview_2.jpg" alt=""></a></div>
+							<h3 class="preview__title"><a href="kitchens.html">Kitchens</a></h3>
+							<p class="preview__description">As the focal point of your home, you deserve to have the kitchen you’ve always wanted! Let Gearhart Home Improvements make your kitchen dreams come true!</p>
+							<a href="kitchens.html" class="button">Read more</a>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="preview">
+							<div class="preview__image"><a href="renovations.html"><img src="img/main_preview_3.jpg" alt=""></a></div>
+							<h3 class="preview__title"><a href="renovations.html">House Renovations</a></h3>
+							<p class="preview__description">No matter what the job, we have the knowledge and experience to make your project beautiful!</p>
+							<a href="renovations.html" class="button">Read more</a>
+						</div>
+					</div>
+
+				</div>
 				
-							
-                
-            		
+				<div class="preview">
+					<div class="preview__image"><img src="img/main_preview_4.jpg" alt=""></div>
+					<h3 class="preview__title">DO YOU NEED PROFESSIONALS TO PROJECT AND BUILD YOUR DREAM HOME?</h3>
+					<p class="preview__description">We offer the best engineers and builders to make your dreams come true.</p>
+					<ul class="contacts">
+						<li class="contacts__item contacts__item_phone"><a href="tel:9734894046">973-489-4046 Call or Text</a></li>
+						<li class="contacts__item contacts__item_phone"><a href="tel:2016814606">201-681-4606 Call or Text</a></li>
+						<li class="contacts__item"><a href="mailto:DanielGearhart41@gmail.com">DanielGearhart41@gmail.com</a></li>
+						<li class="contacts__item">Lic # HIC 13VHO7195800</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section>
 
+<footer class="footer">
+	<div class="footer__info">
+		<div class="container">
+			<div class="row">
+				<div class="footer__copy col-md-8">&copy; Copyright 2016 | <a href="index.html">Gearhart Home Improvements</a>. All rights reserved.</div>
+				<div class="footer__share col-md-4">
+					<ul class="footer__share__list">
+						<li class="footer__share__item"><a href="mailto:DanielGearhart41@gmail.com" title="Email"><img src="img/share/em.png" alt="Email"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 
-    </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/magnific-popup.min.js"></script>
+<script src="js/common.js"></script>
+
+</body>
 </html>
