@@ -5,7 +5,7 @@ $(function() {
 		return false;
 	});
 
-	$('.gallery').magnificPopup({
+	$('.gallery, .zoom').magnificPopup({
 		delegate: '.preview__image a',
 		type: 'image',
 		gallery: {
