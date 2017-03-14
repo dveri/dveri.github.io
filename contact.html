@@ -19,8 +19,15 @@
 	<meta name="theme-color" content="#000">
 	<meta name="msapplication-navbutton-color" content="#000">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+	
 </head>
 <body>
+
+<div class="popup1">
+	<h3>Спасибо!</h3>
+	<p>Ваше сообщение отправлено!</p>
+	<div id="close_popup"></div>
+</div>
 
 <div class="counters">
 	<!-- counters code -->
@@ -102,8 +109,10 @@
 						<input type="hidden" name="fbzx" value="-8959907463601682350">
 
 						<div class="user-form__submit col-md-12">
-							<!--<button class="button" type="submit">ОТПРАВИТЬ</button>-->
-							<input type="submit" value="ОТПРАВИТЬ" class="button">
+							
+							<button class="button" type="submit">ОТПРАВИТЬ</button><br><br>
+							<!--<input type="submit" value="ОТПРАВИТЬ" class="button">-->
+							<input type="button" id="show_popup" value="ОТПРАВИТЬ">
 						</div>
 					</div>
 				</form>
@@ -113,6 +122,17 @@
 	</div>
 </section>
 </br>
+
+
+
+
+<!--<a data-plugin="fancybox" href="https://dveri.github.io/contact.html">ссылка 1</a>
+<div style="display:none">
+    <div id="contact">
+    <strong>Курьером</strong> (доставка курьером осуществляется на следующий
+       день после заказа<br />с 12-00 до 19-00, пожалуйста указывайте удобное время доставки).
+    </div>
+</div>
 <!--<section id="main">
 		<div id="headerwrap" style="padding-top: 10%">
 				<div class="container">
@@ -121,7 +141,7 @@
 					
 				</div>
 		</div>
-</section>
+</section>-->
 
 <footer class="footer">
 	<!--div class="footer__clients">
@@ -153,10 +173,14 @@
 		</div>
 	</div>
 </footer>
+<div id="overlay"></div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/magnific-popup.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/popup.js"></script>
+
+
 
 </body>
 </html>
