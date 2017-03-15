@@ -6,7 +6,7 @@ $(document).ready(function() {
         $('.popup1, #overlay').fadeIn(300);
     });
 	
-    $('.close_popup').click(function() { // Скрываем всплывающее окно при клике по кнопке закрыть
+    $('#close_popup').click(function() { // Скрываем всплывающее окно при клике по кнопке закрыть
 		$('.popup1, #overlay').fadeOut(300);
     });
 	

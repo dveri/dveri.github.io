@@ -421,10 +421,18 @@
 	display: none;
 }
 
-.close_popup {
+.popup1 p {
+	margin: 6px 0;
+}
+
+.popup1 a {
+	color: #66c3e6;
+}
+
+#close_popup {
 	width: 14px;
 	height: 16px;
-	background: url("img/close.png") no-repeat;
+	background: url("mg/close.png") no-repeat;
 	cursor: pointer;
 	position: absolute;
 	top: 15px;
