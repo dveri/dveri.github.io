@@ -26,7 +26,7 @@
 <div class="popup1">
 	<h3>Спасибо!</h3>
 	<p>Ваше сообщение отправлено!</p>
-	<div id="close_popup"></div>
+	<div id="close_popup">&times;</div>
 </div>
 
 <div class="counters">
@@ -76,31 +76,23 @@
 			<div class="col-md-8 col-sm-6">
 
 				<script type="text/javascript">var submitted=false;</script>
-				<iframe name="hidden_iframe" id="hidden_iframe" 
+				<iframe name="hidden_iframe" id="hidden_iframe" class="user-form"
 				style="display:none;" onload="if(submitted) {window.location='https://dveri.github.io/contact.html';}"></iframe>
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSf8zF2ayIZYQUX0ajcJBuSDxPItkoJYYlKvgvJCDGoKXa1Afg/formResponse" method="post" 
 				target="hidden_iframe" onsubmit="submitted=true;">
-				<!--<input type="text" placeholder="fio" name="entry.1291580571" class="text" aria-required="true" required=""><br>
-				<input type="email" placeholder="email" name="entry.2055330304" class="email" aria-required="true" required=""><br>
-				<input type="submit" value="ОТПРАВИТЬ" class="button">-->
-
-
-				<form id="contactform" class="user-form">
 				
-					<div class="success" style="display: none">спасибо!</div>
+				
+				
+					<!--<div class="success" style="display: none">спасибо!</div>-->
 					<div class="row">
 						<div class="col-md-6">
 							<input class="user-form__text" type="text" name="entry.1723511500" required placeholder="Имя">
 						</div>
-						<!--<div class="col-md-6">
-							<input class="user-form__text" type="text" name="lastname" required placeholder="Фамилия">
-						</div>-->
+						
 						<div class="col-md-6">
 							<input class="user-form__text" type="email" name="entry.2138187443" required placeholder="Email">
 						</div>
-						<!--<div class="col-md-6">
-							<input class="user-form__text" type="text" name="service" required placeholder="Фабрика дверей">
-						</div>-->
+						
 						<div class="col-md-12">
 							<textarea class="user-form__textarea" name="entry.1001007947" required placeholder="Сообщение"></textarea>
 						</div>
@@ -109,39 +101,18 @@
 						<input type="hidden" name="fbzx" value="-8959907463601682350">
 
 						<div class="user-form__submit col-md-12">
-							
-							<button class="button" type="submit">ОТПРАВИТЬ</button><br><br>
+							<button class="button" id="show_popup" type="submit">ОТПРАВИТЬ</button><br><br>
 							<!--<input type="submit" value="ОТПРАВИТЬ" class="button">-->
-							<input type="button" id="show_popup" value="ОТПРАВИТЬ">
+							<input type="submit" id="show_popup" value="ОТПРАВИТЬ">
 						</div>
 					</div>
+				
 				</form>
-				</form>
+				
 			</div>
 		</div>
 	</div>
 </section>
-</br>
-
-
-
-
-<!--<a data-plugin="fancybox" href="https://dveri.github.io/contact.html">ссылка 1</a>
-<div style="display:none">
-    <div id="contact">
-    <strong>Курьером</strong> (доставка курьером осуществляется на следующий
-       день после заказа<br />с 12-00 до 19-00, пожалуйста указывайте удобное время доставки).
-    </div>
-</div>
-<!--<section id="main">
-		<div id="headerwrap" style="padding-top: 10%">
-				<div class="container">
-					<div class="row mt centered">
-					<h1>Отлично! Форма заполнена, все получилось!</h1>
-					
-				</div>
-		</div>
-</section>-->
 
 <footer class="footer">
 	<!--div class="footer__clients">

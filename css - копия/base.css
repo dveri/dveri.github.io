@@ -45,6 +45,12 @@ button {
 	background: none;
 }
 
+show_popup {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+}
 
 img {
 	-ms-interpolation-mode: bicubic;
