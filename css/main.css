@@ -432,7 +432,7 @@
 #close_popup {
 	width: 14px;
 	height: 16px;
-	background: url("img/close.png") no-repeat;
+	background: url("https://github.com/dveri/dveri.github.io/img/close.png") no-repeat;
 	cursor: pointer;
 	position: absolute;
 	top: 15px;
