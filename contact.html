@@ -23,13 +23,6 @@
 </head>
 <body>
 
-<div class="overlay" style="display: none"></div>
-<div class="popup" style="display: none">
-	<div class="popup__close">&times;</div>
-	<h3>Спасибо!</h3>
-	<p>Ваше сообщение отправлено!</p>
-</div>
-
 <div class="counters">
 	<!-- counters code -->
 </div>
@@ -76,9 +69,11 @@
 
 			<div class="col-md-8 col-sm-6">
 
-				<iframe name="hidden_iframe" id="hidden_iframe" class="user-form" style="display:none;" onload="if(submitted) {window.location='https://dveri.github.io/contact.html';}"></iframe>
-				<form class="user-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf8zF2ayIZYQUX0ajcJBuSDxPItkoJYYlKvgvJCDGoKXa1Afg/formResponse" method="post" target="hidden_iframe" onsubmit="$('.popup, .overlay').show(); this.reset();">
+				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='https://dveri.github.io/contact.html';}"></iframe>
+				<form class="user-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf8zF2ayIZYQUX0ajcJBuSDxPItkoJYYlKvgvJCDGoKXa1Afg/formResponse" method="post" target="hidden_iframe" onsubmit="$('.user-form__success').show();">
 				
+					<div class="user-form__success success" style="display: none">Спасибо!</div>
+
 					<div class="row">
 						<div class="col-md-6">
 							<input class="user-form__text" type="text" name="entry.1723511500" required placeholder="Имя">
