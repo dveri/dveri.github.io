@@ -215,10 +215,16 @@ h3 {
 }
 
 .user-form__submit {
-	text-align: right;
+	text-align: left;
 }
 
 .user-form__submit .button {
 	padding: 0 2.5rem;
 	line-height: 5rem;
+}
+
+hr {
+		border: none;
+		background-color: grey;
+		height: 1px; 
 }

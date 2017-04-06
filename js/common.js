@@ -5,6 +5,11 @@ $(function() {
 		return false;
 	});
 
+	$('.popup__close').click(function(){
+		$('.popup, .overlay').hide();
+		return false;
+	});
+
 	$('.gallery, .zoom').magnificPopup({
 		delegate: '.preview__image a',
 		type: 'image',
