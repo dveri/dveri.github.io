@@ -10,10 +10,10 @@
 	float: left;
 	padding: 0 0 0 5rem;
 	height: 4rem;
-	line-height: 2.5rem;
+	line-height: 2.3rem;
 	font-size: 3rem;
 	overflow: hidden;
-	text-transform: uppercase;
+	text-transform: none;
 	white-space: nowrap;
 	color: #15355E;
 }
@@ -34,7 +34,7 @@
 	display: block;
 	margin: 0.5rem 0 0 0.2rem;
 	line-height: 1rem;
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	color: #999;
 }
 
