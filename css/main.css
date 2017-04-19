@@ -13,7 +13,7 @@
 	line-height: 2.3rem;
 	font-size: 3rem;
 	overflow: hidden;
-	text-transform: none;
+	/*text-transform: none;*/
 	white-space: nowrap;
 	color: #15355E;
 }
