@@ -10,7 +10,8 @@ $(function() {
 		return false;
 	});
 
-	$('.gallery, .zoom').magnificPopup({
+	$('.gallery, .zoom').each(function() {
+	$(this).magnificPopup({
 		delegate: '.preview__image a',
 		type: 'image',
 		gallery: {
@@ -18,6 +19,7 @@ $(function() {
 			navigateByImgClick: true,
 			preload: [0,1]
 		}
+	});
 	});
 
 	$('.donate__link').magnificPopup({
